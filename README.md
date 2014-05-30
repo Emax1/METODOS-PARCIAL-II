@@ -29,7 +29,9 @@ compa<-function(r){
 library(lawstat)
 compa(100)
 ```
+---
 #practica //////clases
+---
 ```
 set.seed(10)
 mues1<-rnorm(30,mean=3,sd=1)
