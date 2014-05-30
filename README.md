@@ -26,6 +26,7 @@ compa<-function(r){
   return(list(r1=prop1,r2=prop2))
 }
 
+install.packages('lawstat')
 library(lawstat)
 compa(100)
 ```
@@ -88,3 +89,38 @@ return(list(estad=T3,pvalor=pvalor))
 phbti(datos)
 
 ```
+### Funcoiones auxiliar
+#verificar
+```
+des4<-function(){
+  d4<-sum((datos-mean(datos))^4)
+  return(d4)
+}
+
+
+by(datos[,2],datos[,1],des4(datos))
+```
+### Prueba levene
+library(lawstat)
+levene.test(datos[,2],datos[,1])
+
+###comaración de medias 
+#### Analisis de varianza
+```
+summary(aov(lm(datos[,2]~datos[,1])))
+summary(aov(lm(InsectSprays[,1]~InsectSprays[,2])))
+
+```
+####InsectSprays[, 2]  5   2669   533.8    34.7 ***<2e-16 *** ****
+
+###
+H0: u1=u2=.....=uk
+H1: Almenos un ui es diferente a las demas i=1,2,...k
+alfa
+pvalor=<2e-16
+R
+```
+1-pf(34.7,5,66)
+```
+
+###
