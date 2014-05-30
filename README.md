@@ -2,6 +2,8 @@ METODOS-PARCIAL-II
 ==================
 
 COMADOS
+```
+{
 compa<-function(r){
   grupos<-rep(1:3,c(20,20,20))
   resul<-matrix(0,r,2)
@@ -26,9 +28,9 @@ compa<-function(r){
 
 library(lawstat)
 compa(100)
-
-practica //////clases
-
+```
+#practica //////clases
+```
 set.seed(10)
 mues1<-rnorm(30,mean=3,sd=1)
 
@@ -44,9 +46,12 @@ grupos<-rep(1:3,c(30,40,50))
 mues<-c(mues1,mues2,mues3)
 datos<-cbind(grupos,mues)
 bartlett.test(datos[,2],datos[,1])
+```
 #Bartlett's K-squared = 25.8957, df = 2, p-value = 2.381e-06
+```
 1-qchisq(25.8957,2)
 
-#In qchisq(25.8957, 2) : Se han producido NaNs
+--In qchisq(25.8957, 2) : Se han producido NaNs
 
-#tiene que coincidir y si coinciden
+--tiene que coincidir y si coinciden
+```
