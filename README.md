@@ -47,11 +47,40 @@ mues<-c(mues1,mues2,mues3)
 datos<-cbind(grupos,mues)
 bartlett.test(datos[,2],datos[,1])
 ```
-#Bartlett's K-squared = 25.8957, df = 2, p-value = 2.381e-06
+###Bartlett's K-squared = 25.8957, df = 2, p-value = 2.381e-06
 ```
 1-qchisq(25.8957,2)
 
 --In qchisq(25.8957, 2) : Se han producido NaNs
 
 --tiene que coincidir y si coinciden
+```
+##prueba de Hipotesis para la comparación de varianzas
+##de K muestras
+```
+ni<-as.vector(by(datos[,2],datos[,1],length))
+ni
+si<-as.vector(by(datos[,2],datos[,1],sd))
+si
+sd2i<-as.vector(by(datos[,2],datos[,1],var))
+sd2i
+n1<-sum(ni*si)
+d1<-sum(ni*sd2i)
+T3<-2*sum(ni*sd2i*(1/si-n1/d1)^2)  ###Estadistico T3
+
+```
+##funcion prueba de la homogenidad basada en la teoria de la Información
+```
+phbti<-function(datos){
+ni<-as.vector(by(datos[,2],datos[,1],length))
+si<-as.vector(by(datos[,2],datos[,1],sd))
+sd2i<-as.vector(by(datos[,2],datos[,1],var))
+n1<-sum(ni*si)
+d1<-sum(ni*sd2i)
+T3<-2*sum(ni*sd2i*(1/si-n1/d1)^2)  ###Estadistico T3
+return(T3)
+}
+
+phbti(datos)
+
 ```
