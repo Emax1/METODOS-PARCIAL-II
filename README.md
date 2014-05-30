@@ -75,10 +75,12 @@ phbti<-function(datos){
 ni<-as.vector(by(datos[,2],datos[,1],length))
 si<-as.vector(by(datos[,2],datos[,1],sd))
 sd2i<-as.vector(by(datos[,2],datos[,1],var))
+k<-length(ni)
 n1<-sum(ni*si)
 d1<-sum(ni*sd2i)
 T3<-2*sum(ni*sd2i*(1/si-n1/d1)^2)  ###Estadistico T3
-return(T3)
+pvalor<-1-pchisq(T3,k-1)
+return(list(estad=T3,pvalor=pvalor))
 }
 
 phbti(datos)
