@@ -1,7 +1,7 @@
 METODOS-PARCIAL-II
 ==================
 
-COMADOS
+COMANDOS
 ```
 {
 compa<-function(r){
